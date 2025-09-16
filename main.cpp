@@ -13,6 +13,10 @@ const int ARRAY_SIZE = 100;
 const int MIN_AGE = 5;
 const int MAX_AGE = 100;
 const int MAX_COURSES = 10;
+const int ID_FIELD = 5;
+const int NAME_FIELD = 20;
+const int AGE_FIELD = 5;
+const int COURSES_FIELD = 50;
 
 // Function prototypes
 void addStudent(Student* studentArr, int& count);      // Add a new Student to the array
@@ -63,14 +67,14 @@ int main ()
 
     cout << "Total number of Students: " << count << endl;
     // Display a header for the Student objects
-    cout << left << setw(5) << "ID";
-    cout << left << setw(20) << "Student Name";
-    cout << left << setw(5) << "Age";
-    cout << left << setw(50) << "Enrolled Courses";
+    cout << left << setw(ID_FIELD) << "ID";
+    cout << left << setw(NAME_FIELD) << "Student Name";
+    cout << left << setw(AGE_FIELD) << "Age";
+    cout << left << setw(COURSES_FIELD) << "Enrolled Courses";
     cout << endl;
 
     // Display a === line to separate the header from the rest
-    cout << string(5 + 20 + 5 + 50, '=') << endl;
+    cout << string(ID_FIELD + NAME_FIELD + AGE_FIELD + COURSES_FIELD, '=') << endl;
 
     // Iterate and display all the Student objects in the array
     for (int i = 0; i < count; i++)
@@ -186,9 +190,9 @@ void addStudent(Student* studentArr, int& count)
 void displayStudent(const Student& student)
 {
     // Display the basic fields
-    cout << left << setw(5) << student.studentID;
-    cout << left << setw(20) << student.name;
-    cout << left << setw(5) << student.age;
+    cout << left << setw(ID_FIELD) << student.studentID;
+    cout << left << setw(NAME_FIELD) << student.name;
+    cout << left << setw(AGE_FIELD) << student.age;
     
     // Iterate and display all the courses
     for (int i = 0; i < student.courseCount; i++)
