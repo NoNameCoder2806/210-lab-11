@@ -15,4 +15,5 @@ struct Student
     string name;           // The student's name
     int age;               // The student's age 
     string* courses;       // All the courses that the student is currently taking
+    int courseCount;       // The number of courses the student is currently enrolled in
 };

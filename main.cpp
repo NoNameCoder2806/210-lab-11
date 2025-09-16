@@ -4,6 +4,7 @@
 // Libraries and header files
 #include <iostream>
 #include <string>
+#include <format>
 #include "Student.h"
 using namespace std;
 
@@ -26,6 +27,14 @@ int main ()
 
     // Declare a counter to keep track of the array's size
     int count = 0;
+
+    // Display a header for the Student objects
+
+    // Iterate and display all the Student objects in the array
+    for (int i = 0; i < count; i++)
+    {
+        displayStudent(studentArr[count]);
+    }
 
     return 0;
 }
@@ -144,5 +153,14 @@ void addStudent(Student* studentArr, int& count)
 */
 void displayStudent(const Student& student)
 {
-
+    // Display the basic fields
+    cout << left << setw(5) << student.studentID;
+    cout << left << setw(25) << student.name;
+    cout << left << setw(5) << student.age;
+    
+    // Iterate and display all the courses
+    for (int i = 0; i < MAX_COURSES; i++)
+    {
+        cout << student.courses[i];
+    }
 }
