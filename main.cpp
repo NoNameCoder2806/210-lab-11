@@ -70,7 +70,7 @@ void addStudent(Student* studentArr, int& count)
     {
         // Display an error message
         cout << "Error! Name cannot be blank! Please enter a name: ";
-        cin >> temp.name;
+        getline(cin, temp.name);
         cin.ignore(1000, 10);
     }
 
@@ -90,7 +90,7 @@ void addStudent(Student* studentArr, int& count)
 
     // Prompt the user to enter Student's enrolled courses
     cout << "Enter the Student's courses (MAX: 10 courses): " << endl;
-    cout << " --- Note: Please enter 1 course per line! Enter 0 to exit! --- " << endl;
+    cout << " --- Note: Please enter ONLY 1 course per line! Enter 0 to exit! --- " << endl;
 
     // Declare a coursesCount variable to keep track of the number of courses
     int coursesCount = 0;
@@ -102,19 +102,25 @@ void addStudent(Student* studentArr, int& count)
         string course;
 
         // Store the input string into the course variable
-        cin >> course;
+        getline(cin, course);
         cin.ignore(1000, 10);
 
-        // Sentinel case
+        // Check whether the entered course is empty or not
+        while (course.length() <= 0)
+        {
+            // Display an error message
+            cout << "Error! Course cannot be blank! Please enter a course: ";
+            getline(cin, course);
+        }
+
+            // Sentinel case
         if (course == "0")
         {
             break;
         }
-        else
-        {
-            // Store the entered course
-            temp.courses[coursesCount] = course;
-        }
+        
+        // Store the entered course
+        temp.courses[coursesCount] = course;
 
         // Increment the courses count
         coursesCount++;
