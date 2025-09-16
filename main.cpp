@@ -82,6 +82,16 @@ int main ()
         displayStudent(studentArr[i]);
     }
 
+    // Iterate through the array and delete all the Student objects
+    for (int i = 0; i < count; i++)
+    {
+        // Delete the Student object
+        delete[] studentArr[i].courses;
+    }
+
+    // Delete the array
+    delete[] studentArr;
+
     return 0;
 }
 
