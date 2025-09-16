@@ -4,7 +4,7 @@
 // Libraries and header files
 #include <iostream>
 #include <string>
-#include <format>
+#include <iomanip>
 #include "Student.h"
 using namespace std;
 
@@ -28,13 +28,21 @@ int main ()
     // Declare a counter to keep track of the array's size
     int count = 0;
 
+    // Add a Student object into the array
+    addStudent(studentArr, count);
+
+    cout << "Total number of Students: " << count << endl;
     // Display a header for the Student objects
+    cout << left << setw(5) << "ID";
+    cout << left << setw(25) << "Student Name";
+    cout << left << setw(5) << "Age";
 
     // Iterate and display all the Student objects in the array
-    for (int i = 0; i < count; i++)
-    {
-        displayStudent(studentArr[count]);
-    }
+    displayStudent(studentArr[0]);
+    // for (int i = 0; i < count; i++)
+    // {
+    //     displayStudent(studentArr[count]);
+    // }
 
     return 0;
 }
@@ -70,8 +78,8 @@ void addStudent(Student* studentArr, int& count)
     }
 
     // Prompt the user to enter the Student's name
-    cout << "Enter the student's name:";
-    cin >> temp.name;
+    cout << "Enter the student's name: ";
+    getline(cin, temp.name);
     cin.ignore(1000, 10);
 
     // Check whether the entered name is empty or not
@@ -101,9 +109,6 @@ void addStudent(Student* studentArr, int& count)
     cout << "Enter the Student's courses (MAX: 10 courses): " << endl;
     cout << " --- Note: Please enter ONLY 1 course per line! Enter 0 to exit! --- " << endl;
 
-    // Declare a coursesCount variable to keep track of the number of courses
-    int coursesCount = 0;
-
     // While the total number of courses is fewer than 10
     while (true)
     {
@@ -129,12 +134,11 @@ void addStudent(Student* studentArr, int& count)
         }
         
         // Store the entered course
-        temp.courses[coursesCount] = course;
+        temp.courses[temp.courseCount] = course;
+        temp.courseCount++;      // Increment the courses count
 
-        // Increment the courses count
-        coursesCount++;
-
-        if (coursesCount >= 10)
+        // If this is the 10th course, exit the loop
+        if (temp.courseCount >= 10)
         {
             break;
         }
@@ -159,8 +163,18 @@ void displayStudent(const Student& student)
     cout << left << setw(5) << student.age;
     
     // Iterate and display all the courses
-    for (int i = 0; i < MAX_COURSES; i++)
+    for (int i = 0; i < student.courseCount; i++)
     {
+        // Display the course to the console
         cout << student.courses[i];
+
+        // Add a comma and a space if this is not final course
+        if (i != student.courseCount - 1)
+        {
+            cout << ", ";
+        }
     }
+
+    // Enter a new line
+    cout << endl;
 }
