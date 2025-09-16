@@ -28,8 +28,38 @@ int main ()
     // Declare a counter to keep track of the array's size
     int count = 0;
 
-    // Add a Student object into the array
-    addStudent(studentArr, count);
+    // Loop and let user add as many Student objects as they want
+    while (true)
+    {
+        // Declare a char variable to store the choice
+        char choice;
+
+        // Let user decide the choice
+        cout << "Add a Student? (Y/N): ";
+        cin >> choice;
+        cin.ignore(1000, 10);
+
+        // Check whether the choice is valid or not
+        while (toupper(choice) != 'Y' && toupper(choice) != 'N')
+        {
+            // Ask the user to enter a new choice
+            cout << "Invalid choice! Enter Y (Yes) or N (No): ";
+            cin >> choice;
+            cin.ignore(1000, 10);
+        }
+        
+        // If the choice is Y
+        if (toupper(choice) == 'Y')
+        {
+            // Add a Student object into the array
+            addStudent(studentArr, count);
+        }
+        // If the choice is N
+        else if (toupper(choice) == 'N')
+        {
+            break;
+        }
+    }
 
     cout << "Total number of Students: " << count << endl;
     // Display a header for the Student objects
