@@ -14,6 +14,5 @@ struct Student
     string studentID;      // The student's id
     string name;           // The student's name
     int age;               // The student's age 
-    string address;        // The student's current address 
     string* courses;       // All the courses that the student is currently taking
 };

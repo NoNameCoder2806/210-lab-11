@@ -9,6 +9,9 @@ using namespace std;
 
 // Constants
 const int ARRAY_SIZE = 100;
+const int MIN_AGE = 5;
+const int MAX_AGE = 100;
+const int MAX_COURSES = 10;
 
 // Function prototypes
 void addStudent(Student* studentArr, int& count);      // Add a new Student to the array
@@ -36,39 +39,62 @@ int main ()
 */
 void addStudent(Student* studentArr, int& count)
 {
+    // Use a temporary Student struct object to store the input
+    Student temp;
+
     // Calculate Student's ID based on the counter variable
     if (count + 1 < 10)
     {
         // Convert count + 1 to string (Add 2 zeros if the id is smaller than 10)
-        studentArr[count].studentID = "00" + to_string(count + 1);
+        temp.studentID = "00" + to_string(count + 1);
     }
     else if (count + 1 < 100)
     {
         // Convert count + 1 to string (Add 1 zero if the id is smaller than 100)
-        studentArr[count].studentID = "0" + to_string(count + 1);
+        temp.studentID = "0" + to_string(count + 1);
     }
     else if (count + 1 == 100)
     {
         // Convert count + 1 to string
-        studentArr[count].studentID = to_string(count + 1);
+        temp.studentID = to_string(count + 1);
     }
 
     // Prompt the user to enter the Student's name
-    cout << "Enter name for student:";
-    cin >> studentArr[count].name;
+    cout << "Enter the student's name:";
+    cin >> temp.name;
     cin.ignore(1000, 10);
 
     // Check whether the entered name is empty or not
-    while (studentArr[count].name.length() <= 0) 
+    while (temp.name.length() <= 0) 
     {
         // Display an error message
         cout << "Error! Name cannot be blank! Please enter a name: ";
-        cin >> studentArr[count].name;
+        cin >> temp.name;
         cin.ignore(1000, 10);
     }
 
-    // Prompt the user to enter Student's 
+    // Prompt the user to enter Student's age
+    cout << "Enter the student's age: ";
+    cin >> temp.age;
+    cin.ignore(1000, 10);
     
+    // Check whether the entered age is valid or not
+    while (temp.age < 5 || temp.age > 100)
+    {
+        // Display an error message
+        cout << "Error! Please enter a valid age (between 5 and 100): ";
+        cin >> temp.age;
+        cin.ignore(1000, 10);
+    }
+
+    // Prompt the user to enter Student's enrolled courses
+    cout << "Enter the Student's courses (MAX: 10 courses): ";
+    while (true)
+    {
+        // Declare a coursesCount variable to keep track of the number of courses
+        int coursesCount = 0;
+        cin >> temp.courses[coursesCount];
+    }
 }
 
 /*
