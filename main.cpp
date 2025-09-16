@@ -36,7 +36,24 @@ int main ()
 */
 void addStudent(Student* studentArr, int& count)
 {
-    // Prompt the user to enter the student's name
+    // Calculate Student's ID based on the counter variable
+    if (count + 1 < 10)
+    {
+        // Convert count + 1 to string (Add 2 zeros if the id is smaller than 10)
+        studentArr[count].studentID = "00" + to_string(count + 1);
+    }
+    else if (count + 1 < 100)
+    {
+        // Convert count + 1 to string (Add 1 zero if the id is smaller than 100)
+        studentArr[count].studentID = "0" + to_string(count + 1);
+    }
+    else if (count + 1 == 100)
+    {
+        // Convert count + 1 to string
+        studentArr[count].studentID = to_string(count + 1);
+    }
+
+    // Prompt the user to enter the Student's name
     cout << "Enter name for student:";
     cin >> studentArr[count].name;
     cin.ignore(1000, 10);
@@ -50,10 +67,8 @@ void addStudent(Student* studentArr, int& count)
         cin.ignore(1000, 10);
     }
 
-    // Prompt the user to enter the student's id
-    cout << "Enter the student id: ";
-    cin >> studentArr[count].studentID;
-    cin.ignore(1000, 10);
+    // Prompt the user to enter Student's 
+    
 }
 
 /*
