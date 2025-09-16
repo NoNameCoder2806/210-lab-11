@@ -34,16 +34,19 @@ int main ()
     cout << "Total number of Students: " << count << endl;
     // Display a header for the Student objects
     cout << left << setw(5) << "ID";
-    cout << left << setw(25) << "Student Name";
+    cout << left << setw(20) << "Student Name";
     cout << left << setw(5) << "Age";
+    cout << left << setw(50) << "Enrolled Courses";
     cout << endl;
 
+    // Display a === line to separate the header from the rest
+    cout << string(5 + 20 + 5 + 50, '=') << endl;
+
     // Iterate and display all the Student objects in the array
-    displayStudent(studentArr[0]);
-    // for (int i = 0; i < count; i++)
-    // {
-    //     displayStudent(studentArr[count]);
-    // }
+    for (int i = 0; i < count; i++)
+    {
+        displayStudent(studentArr[i]);
+    }
 
     return 0;
 }
@@ -108,6 +111,9 @@ void addStudent(Student* studentArr, int& count)
     cout << "Enter the Student's courses (MAX: 10 courses): " << endl;
     cout << " --- Note: Please enter ONLY 1 course per line! Enter 0 to exit! --- " << endl;
 
+    // Set courseCount to 0
+    temp.courseCount = 0;
+
     // While the total number of courses is fewer than 10
     while (temp.courseCount < 10)
     {
@@ -125,8 +131,6 @@ void addStudent(Student* studentArr, int& count)
             getline(cin, course);
         }
 
-        cout << "Entered course: " << course << endl;
-
         // Sentinel case
         if (course == "0")
         {
@@ -138,8 +142,6 @@ void addStudent(Student* studentArr, int& count)
         temp.courseCount++;      // Increment the courses count
     }
 
-    // Entered courses:
-    cout << "Entered courses: " << temp.courseCount << endl;
     // Assign the temp Student struct into the array
     studentArr[count] = temp;
     count++;    // Increment the total number of Students
@@ -155,7 +157,7 @@ void displayStudent(const Student& student)
 {
     // Display the basic fields
     cout << left << setw(5) << student.studentID;
-    cout << left << setw(25) << student.name;
+    cout << left << setw(20) << student.name;
     cout << left << setw(5) << student.age;
     
     // Iterate and display all the courses
