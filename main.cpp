@@ -11,9 +11,9 @@ using namespace std;
 const int ARRAY_SIZE = 100;
 
 // Function prototypes
-void addStudent(Student* studentArr, int& count);            // Add a new Student to the array
+void addStudent(Student* studentArr, int& count);      // Add a new Student to the array
 
-void displayStudent(const Student& student);     // Display the information of a Student object
+void displayStudent(const Student& student);           // Display the information of a Student object
 
 int main ()
 {
@@ -21,6 +21,9 @@ int main ()
     Student* studentArr = nullptr;
     studentArr = new Student[ARRAY_SIZE];
 
+    // Declare a counter to keep track of the array's size
+    int count = 0;
+    
     return 0;
 }
 
