@@ -36,6 +36,7 @@ int main ()
     cout << left << setw(5) << "ID";
     cout << left << setw(25) << "Student Name";
     cout << left << setw(5) << "Age";
+    cout << endl;
 
     // Iterate and display all the Student objects in the array
     displayStudent(studentArr[0]);
@@ -80,7 +81,6 @@ void addStudent(Student* studentArr, int& count)
     // Prompt the user to enter the Student's name
     cout << "Enter the student's name: ";
     getline(cin, temp.name);
-    cin.ignore(1000, 10);
 
     // Check whether the entered name is empty or not
     while (temp.name.length() <= 0) 
@@ -88,7 +88,6 @@ void addStudent(Student* studentArr, int& count)
         // Display an error message
         cout << "Error! Name cannot be blank! Please enter a name: ";
         getline(cin, temp.name);
-        cin.ignore(1000, 10);
     }
 
     // Prompt the user to enter Student's age
@@ -110,14 +109,13 @@ void addStudent(Student* studentArr, int& count)
     cout << " --- Note: Please enter ONLY 1 course per line! Enter 0 to exit! --- " << endl;
 
     // While the total number of courses is fewer than 10
-    while (true)
+    while (temp.courseCount < 10)
     {
         // Create a temporary string to store the course
-        string course;
+        string course = "";
 
         // Store the input string into the course variable
         getline(cin, course);
-        cin.ignore(1000, 10);
 
         // Check whether the entered course is empty or not
         while (course.length() <= 0)
@@ -127,7 +125,9 @@ void addStudent(Student* studentArr, int& count)
             getline(cin, course);
         }
 
-            // Sentinel case
+        cout << "Entered course: " << course << endl;
+
+        // Sentinel case
         if (course == "0")
         {
             break;
@@ -136,14 +136,10 @@ void addStudent(Student* studentArr, int& count)
         // Store the entered course
         temp.courses[temp.courseCount] = course;
         temp.courseCount++;      // Increment the courses count
-
-        // If this is the 10th course, exit the loop
-        if (temp.courseCount >= 10)
-        {
-            break;
-        }
     }
 
+    // Entered courses:
+    cout << "Entered courses: " << temp.courseCount << endl;
     // Assign the temp Student struct into the array
     studentArr[count] = temp;
     count++;    // Increment the total number of Students
