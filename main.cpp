@@ -23,7 +23,7 @@ int main ()
 
     // Declare a counter to keep track of the array's size
     int count = 0;
-    
+
     return 0;
 }
 
@@ -36,7 +36,24 @@ int main ()
 */
 void addStudent(Student* studentArr, int& count)
 {
+    // Prompt the user to enter the student's name
+    cout << "Enter name for student:";
+    cin >> studentArr[count].name;
+    cin.ignore(1000, 10);
 
+    // Check whether the entered name is empty or not
+    while (studentArr[count].name.length() <= 0) 
+    {
+        // Display an error message
+        cout << "Error! Name cannot be blank! Please enter a name: ";
+        cin >> studentArr[count].name;
+        cin.ignore(1000, 10);
+    }
+
+    // Prompt the user to enter the student's id
+    cout << "Enter the student id: ";
+    cin >> studentArr[count].studentID;
+    cin.ignore(1000, 10);
 }
 
 /*
