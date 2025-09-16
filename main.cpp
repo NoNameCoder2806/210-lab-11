@@ -41,6 +41,7 @@ void addStudent(Student* studentArr, int& count)
 {
     // Use a temporary Student struct object to store the input
     Student temp;
+    temp.courses = new string[MAX_COURSES];    // Dynamically declare a string array to store all the courses
 
     // Calculate Student's ID based on the counter variable
     if (count + 1 < 10)
@@ -88,13 +89,45 @@ void addStudent(Student* studentArr, int& count)
     }
 
     // Prompt the user to enter Student's enrolled courses
-    cout << "Enter the Student's courses (MAX: 10 courses): ";
+    cout << "Enter the Student's courses (MAX: 10 courses): " << endl;
+    cout << " --- Note: Please enter 1 course per line! Enter 0 to exit! --- " << endl;
+
+    // Declare a coursesCount variable to keep track of the number of courses
+    int coursesCount = 0;
+
+    // While the total number of courses is fewer than 10
     while (true)
     {
-        // Declare a coursesCount variable to keep track of the number of courses
-        int coursesCount = 0;
-        cin >> temp.courses[coursesCount];
+        // Create a temporary string to store the course
+        string course;
+
+        // Store the input string into the course variable
+        cin >> course;
+        cin.ignore(1000, 10);
+
+        // Sentinel case
+        if (course == "0")
+        {
+            break;
+        }
+        else
+        {
+            // Store the entered course
+            temp.courses[coursesCount] = course;
+        }
+
+        // Increment the courses count
+        coursesCount++;
+
+        if (coursesCount >= 10)
+        {
+            break;
+        }
     }
+
+    // Assign the temp Student struct into the array
+    studentArr[count] = temp;
+    count++;    // Increment the total number of Students
 }
 
 /*
